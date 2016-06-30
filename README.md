@@ -32,9 +32,9 @@ import { Tasks } from '../imports/api/tasks.js';
 
 class SampleCtrl {
 
-constructor(\$scope) {
+constructor($scope) {
 
-\$scope.viewModel(this);
+$scope.viewModel(this);
 
 this.subscribe('tasks');
 
@@ -60,28 +60,28 @@ Tasks.insert({title: "new", author:"mart",createdAt: new Date()});
 
 }
 
-angular.module('simple-todos', \[
+angular.module('simple-todos', [
 
 angularMeteor
 
-\]).component('myFunc', {
+]).component('myFunc', {
 
 templateUrl: 'client/myfunc.html',
 
 controllerAs: 'myFunc',
 
-controller:\['\$scope','\$reactive',SampleCtrl\],
+controller:['$scope','$reactive',SampleCtrl],
 
 });
 ```
 
 **注意：**如果要使用reactive，需要更改结构体最初的代码如下【添加reactive依赖，绑定scope】
 
-constructor(\$scope,\$reactive) {
+constructor($scope,$reactive) {
 
-// \$scope.viewModel(this);
+// $scope.viewModel(this);
 
-\$reactive(this).attach(\$scope);
+$reactive(this).attach($scope);
 
 参考：
 
